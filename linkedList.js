@@ -70,6 +70,22 @@ class LinkedList {
     }
     return false;
   }
+  insertAt(value, index) {
+
+  }
+  findMax() {
+    if (!this.head) return null;
+    let max = this.head.value;
+    let current = this.head;
+    while (current.next) {
+      if (current.next.value > max) {
+        max = current.next.value;
+      } else {
+        current = current.next;
+      }
+    }
+    return max;
+  }
   show() {
     const values = [];
     let current = this.head;
@@ -85,8 +101,6 @@ list.add(1)
 list.add(2)
 list.add(3)
 list.add(3)
-list.add(3)
-// list.deleteNode(3)
+list.add(0)
 list.find(3)
-// list.show()
-console.log(list.find(10))
+console.log(list.findMax())
