@@ -42,6 +42,7 @@ class LinkedList {
     if (!this.head) return null;
     if (!this.head.value === value) {
       this.head === this.head.next;
+      this.size--;
       return;
     }
     let current = this.head;
@@ -59,7 +60,7 @@ class LinkedList {
   }
   find(value) {
     if (!this.head) return null;
-    if (!this.head.value === value) return true;
+    if (this.head.value === value) return true;
     let current = this.head;
     while (current.next) {
       if (current.next.value === value) {
@@ -71,7 +72,19 @@ class LinkedList {
     return false;
   }
   insertAt(value, index) {
-
+    const newNode = new Node(value);
+    if (index === 0 || !this.head) {
+      newNode.next = this.head;
+      this.head = newNode;
+      return;
+    }
+    let current = this.head;
+    for (let i = 0; i < index - 1; i++) {
+      current = current.next;
+    }
+    newNode.next = current.next;
+    current.next = newNode
+    console.log(current, 'newNode')
   }
   findMax() {
     if (!this.head) return null;
@@ -95,6 +108,9 @@ class LinkedList {
     }
     console.log(values)
   }
+  showNode() {
+    return console.log(this.head)
+  }
 }
 const list = new LinkedList();
 list.add(1)
@@ -102,5 +118,6 @@ list.add(2)
 list.add(3)
 list.add(3)
 list.add(0)
-list.find(3)
-console.log(list.findMax())
+list.insertAt(99, 2)
+list.show()
+// list.showNode()
