@@ -51,6 +51,8 @@ function isValid(str) {
         '}': '{',
         ']': '['
     };
+
+    console.log(stack.items)
     for (let char of str) {
         if (char === "{" || char === "(" || char === "[") {
             stack.push(char)
