@@ -1,15 +1,13 @@
-function binarySearch(arr, targetValue) {
-  let left = 0;
-  let right = arr.length - 1;
-  while (left <= right) {
-    let mid = Math.floor((left + right) / 2);
-    if (arr[mid] === targetValue) return mid;
-    if (arr[mid] < targetValue) {
-      left = mid - 1;
-    } else {
-      right = mid + 1;
+function checkDuplicatesWithinK(arr, k) {
+    const s = new Set();
+    const n = arr.length;
+    for (let i = 0; i < n; i++) {
+        if (s.has(arr[i])) return true;
+        s.add(arr[i]);
+        if (i >= k) {
+            s.delete(arr[i - k]);
+        }
     }
-  }
-  return -1;
 }
-console.log(binarySearch([1, 3, 5, 7, 9, 11, 13, 15, 17, 19], 3));
+const arr = [10, 5, 3, 4, 3, 5, 6];
+console.log(checkDuplicatesWithinK(arr, 3));

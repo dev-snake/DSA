@@ -1,27 +1,27 @@
 class Stack {
     constructor() {
-        this.items = []
+        this.items = [];
     }
     push(value) {
-        return this.items.push(value)
+        return this.items.push(value);
     }
     pop() {
-        return this.items.pop()
+        return this.items.pop();
     }
     isEmpty() {
-        return this.items.length === 0
+        return this.items.length === 0;
     }
     size() {
         return this.items.length;
     }
     peek() {
-        return this.items[this.items.length - 1]
+        return this.items[this.items.length - 1];
     }
 }
 function isPalindrome(str) {
     const stack = new Stack();
     for (let char of str) {
-        stack.push(char)
+        stack.push(char);
     }
     for (let char of str) {
         if (char !== stack.items.pop()) {
@@ -29,41 +29,37 @@ function isPalindrome(str) {
         }
     }
     return true;
-
 }
 function converToBinary(number) {
     const stack = new Stack();
     while (number > 0) {
         stack.push(number % 2);
-        number = Math.floor(number / 2)
+        number = Math.floor(number / 2);
     }
     let binary = '';
     while (!stack.isEmpty()) {
-        binary += stack.pop()
+        binary += stack.pop();
     }
     return binary;
-
 }
 function isValid(str) {
     const stack = new Stack();
     const matchingBrackets = {
         ')': '(',
         '}': '{',
-        ']': '['
+        ']': '[',
     };
 
-    console.log(stack.items)
+    console.log(stack.items);
     for (let char of str) {
-        if (char === "{" || char === "(" || char === "[") {
-            stack.push(char)
-        } else if (char === "}" || char === ")" || char === "]") {
+        if (char === '{' || char === '(' || char === '[') {
+            stack.push(char);
+        } else if (char === '}' || char === ')' || char === ']') {
             if (stack.pop() !== matchingBrackets[char]) {
                 return false;
             }
         }
-
-
     }
-    return stack.isEmpty()
+    return stack.isEmpty();
 }
-console.log(isValid('(){(())}'));
+console.log(converToBinary(4));
